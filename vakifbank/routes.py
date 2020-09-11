@@ -19,7 +19,8 @@ CP_TRANSACTION = "CommonPayment/api/VposTransaction"
 
 
 class ServiceUrl:
-    def __init__(self, service_type, mode=0):
+    def __init__(self, service_type, debug=1):
+        mode = not debug
         if service_type == 'VPos':
 
             base = POS_BASE if mode else POS_TEST

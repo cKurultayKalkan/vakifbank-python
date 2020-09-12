@@ -37,3 +37,8 @@ class ServiceUrl:
             self.enroll = f"{base}/{CP_ENROLL}"
             self.api = f"{base}/{CP_API}"
             self.transaction = f"{base}/{CP_TRANSACTION}"
+
+
+__all__ = [
+    ServiceUrl
+]

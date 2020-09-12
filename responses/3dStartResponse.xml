@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IPaySecure>
+    <Message ID="001578747be1-e44a-4dd1-a7a9-77010ccadae5">
+        <VERes>
+            <Version>0.03</Version>
+            <Status>Y</Status>
+            <PaReq>
+                eJyNUk1TwjAQ/Sud3tskbaGWWcKg4MABR8GPGW8xWaFqUwytgL/epBTBmznt29283X27MNgVH94Xmk1e6r7PQup7qGWpcr3s+3X1Glz4Aw73K4M4WqCsDXKY4WYjlujlqu9TyjrpRZqkL8gCTBIRJEqxQKQiC9KUMiqlUAI7Pofb4Rw/ObTFOA1pDOSILKmRK6ErDkJ+Xk5veJZmEe0AaSEUaKYjTtvHoqhjqwI5uEGLAvni4Xo+9ObjxXQ0vrkaA2m8IMtaV2bPLSGQI4DafPBVVa17hGy32zDXuvwSoSyLsDJAXBTIqanb2lkby7bLFZ9Nyvj5KVvJkeq+xI9vs+juWz3t1jP93gfiMkCJCnlEI0ozFnk07sVZL+kCafwgCtcGZ5TaAQ82rF2J4Vng3AFWemM3s+dZktkpjghwty412gw7268N5NTv1cRJKqtGvP8ty4nefHDsuRUrihlr6B0A4ihJu07SXoO1/lzJD0C5wSY=
+            </PaReq>
+            <ACSUrl>https://3dsecure.vakifbank.com.tr/MPIAPI/Troy_ACS.aspx</ACSUrl>
+            <TermUrl>https://3dsecure.vakifbank.com.tr/MPIAPI/MPI_PARes.aspx</TermUrl>
+            <MD>
+                0015aea9088b-0794-4716-96f7-2f20a615819c#001578747be1-e44a-4dd1-a7a9-77010ccadae5#eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDAwMDAwMDEyMjU3NDciLCJ0aW1lb3V0U2Vjb25kcyI6NDMyMDAwMDAsInJvbGVzIjoiIiwiZXhwIjoxNjQzMDcxMTg2fQ._S8VEGeO3nhfEMozEdUYR5kDxxaMWldqK4MyjJ00LYdwftdJQqG-lcXbeiGsk5EG0R0WePF7ra1O02VeB96GLQ#https://goguvenliodeme.bkm.com.tr/troy/approve
+            </MD>
+            <ACTUALBRAND>300</ACTUALBRAND>
+        </VERes>
+    </Message>
+    <VerifyEnrollmentRequestId>5</VerifyEnrollmentRequestId>
+    <MessageErrorCode>200</MessageErrorCode>
+</IPaySecure>

@@ -1,4 +1,5 @@
 .DS_Store
 venv
 .idea
-vakifbank/consts.py
+vakifbank/credentials.py
+__pycache__

@@ -1,4 +1,5 @@
 from .consts import *
+from .credentials import *
 
 
 class Auth:

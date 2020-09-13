@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="vakifbank",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Çağdaş Kurultay Kalkan",
     author_email="kurultay@codeck.com.tr",
     description="Vakıfbank Payment Gateway Python Package",
@@ -18,5 +18,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    install_requires=[
+        'xmltodict',
+        'requests'
+    ],
+
     python_requires='>=3.6',
 )

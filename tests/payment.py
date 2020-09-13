@@ -41,4 +41,7 @@ class TestInit(TestThreeD):
         response = self.three_d.start(data)
         self.data = response
         result = self.three_d.enrollment_result(self.data)
+        html_result = result.get('template')
+        with open("test.html", "w", encoding='utf-8') as file:
+            file.write(str(html_result))
         print(result)

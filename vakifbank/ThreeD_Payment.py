@@ -25,10 +25,10 @@ class ThreeDPayment:
     md = ""
     brand = ""
 
-    def __init__(self):
+    def __init__(self, credentials):
         self.url = ServiceUrl('VPos', DEBUG)
         self.http = HttpClient
-        self.auth = Auth.getInstance().getDict()
+        self.auth = Auth.getInstance(credentials).getDict()
 
     def prepare(self, order_id, amount, pan, expiry, success_url="http://localhost:8000/success", fail_url="http://localhost:8000/success", currency="949", card_type="100"):
         self.order_id = order_id

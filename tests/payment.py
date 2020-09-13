@@ -1,3 +1,4 @@
+import os
 import unittest
 import random
 from vakifbank.ThreeD_Payment import ThreeDPayment
@@ -12,8 +13,12 @@ class TestThreeD(unittest.TestCase):
         month = TEST_CARD.get('expire_month')
         expirydate = year[2:] + month
         currency = CURRENCY_TYPES.get(TEST_CARD.get("currency"))
-
-        self.three_d = ThreeDPayment()
+        credentials = {
+            'HostPassword': os.environ.get('HostPassword'),
+            'HostMerchantId': os.environ.get('HostMerchantId'),
+            'HostTerminalId': os.environ.get('HostTerminalId')
+        }
+        self.three_d = ThreeDPayment(credentials)
         self.data = {
             "order_id": random.randrange(1000),
             "amount": "1.00",

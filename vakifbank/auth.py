@@ -1,14 +1,10 @@
-from .consts import *
-from .credentials import *
-
-
 class Auth:
     __instance = None
 
     @staticmethod
-    def getInstance():
+    def getInstance(credentials):
         if Auth.__instance is None:
-            Auth(HostMerchantId, HostTerminalId, HostPassword)
+            Auth(credentials.get('HostMerchantId'), credentials.get('HostTerminalId'), credentials.get('HostPassword'))
         return Auth.__instance
 
     def __init__(self, merchant_id, terminal_no, password):

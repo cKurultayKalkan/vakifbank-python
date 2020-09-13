@@ -36,16 +36,16 @@ class TestInit(TestThreeD):
 
     def test_start(self):
         data = self.three_d.prepare(**self.data)
-        response = self.three_d.start(data)
+        response = self.three_d.start()
         self.data = response
         result = xmltodict.parse(response)
         self.assertEqual(dict(result)['IPaySecure']['MessageErrorCode'], "200")
 
     def test_enrollment_result(self):
-        data = self.three_d.prepare(**self.data)
-        response = self.three_d.start(data)
+        self.three_d.prepare(**self.data)
+        response = self.three_d.start()
         self.data = response
-        result = self.three_d.enrollment_result(self.data)
+        result = self.three_d.enrollment_result()
         html_result = result.get('template')
         with open("test.html", "w", encoding='utf-8') as file:
             file.write(str(html_result))

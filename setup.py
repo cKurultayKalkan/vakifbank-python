@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="vakifbank",  # Replace with your own username
-    version="0.0.5",
+    version="0.0.7",
     author="Çağdaş Kurultay Kalkan",
     author_email="kurultay@codeck.com.tr",
     description="Vakıfbank Payment Gateway Python Package",
@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/cKurultayKalkan/vakifbank-python.git",
     packages=setuptools.find_packages(),
+    include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

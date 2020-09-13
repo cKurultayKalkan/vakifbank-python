@@ -26,12 +26,13 @@ class ThreeDPayment:
     start_response = ""
     enrollment_response = ""
 
-    def __init__(self, credentials):
-        self.url = ServiceUrl('VPos', DEBUG)
+    def __init__(self, credentials, debug=None):
+        debug_ = debug if debug is not None else DEBUG
+        self.url = ServiceUrl('VPos', debug_)
         self.http = HttpClient
         self.auth = Auth.getInstance(credentials).getDict()
 
-    def prepare(self, order_id, amount, pan, expiry, success_url="http://localhost:8000/success", fail_url="http://localhost:8000/success", currency="949", card_type="100"):
+    def prepare(self, order_id, amount, pan, expiry, success_url, fail_url, currency="949", card_type="100"):
         self.order_id = order_id
         self.amount = amount
         self.pan = pan

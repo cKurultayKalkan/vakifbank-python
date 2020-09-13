@@ -3,3 +3,6 @@ venv
 .idea
 vakifbank/credentials.py
 __pycache__
+build/
+vakifbank.egg-info/
+dist/

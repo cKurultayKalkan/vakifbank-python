@@ -5,7 +5,6 @@ from vakifbank.routes import ServiceUrl
 from vakifbank.consts import *
 from vakifbank.service import HttpClient
 from vakifbank.auth import Auth
-from xml.etree.ElementTree import Element, SubElement, tostring
 from urllib.parse import urlencode
 import xmltodict
 
@@ -60,13 +59,13 @@ class ThreeDPayment:
         payload = urlencode(data)
         response = self.http.post(self.url.enroll, payload, headers)
         self.start_response = response
-        print(response.encode('utf8'))
         return response
 
     def enrollment_result(self):
         result = xmltodict.parse(self.start_response)
         root = dict(result).get('IPaySecure')
         error_code = root.get('MessageErrorCode')
+        error_message = root.get('ErrorMessage')
         message = dict(root.get("Message"))
         order_id = root.get("VerifyEnrollmentRequestId")
         res = dict(message.get("VERes"))
@@ -78,14 +77,13 @@ class ThreeDPayment:
         status = res.get("Status")
         self.enrollment_response = res
         if status != 'Y':
-            return {'status': False, 'message': error_code}
+            return {'status': False, 'message': error_message, 'error_code': error_code}
         return {'status': True}
 
     def get_acs_html(self):
-        res = self.enrollment_response
         template_path = pathlib.Path(__file__).parent.absolute()
         html_template = open(os.path.join(template_path, 'html', 'pareq_to_acs.html'), 'r', encoding="utf-8")
         t = html_template.read()
-        for m in res:
-            t = t.replace('{{' + m + '}}', res[m])
+        for m in self.enrollment_response:
+            t = t.replace('{{' + m + '}}', self.enrollment_response[m])
         return t

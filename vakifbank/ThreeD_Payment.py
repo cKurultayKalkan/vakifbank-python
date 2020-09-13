@@ -24,6 +24,8 @@ class ThreeDPayment:
     term_url = ""
     md = ""
     brand = ""
+    start_response = ""
+    enrollment_response = ""
 
     def __init__(self, credentials):
         self.url = ServiceUrl('VPos', DEBUG)
@@ -40,7 +42,7 @@ class ThreeDPayment:
         self.fail_url = fail_url
         self.card_type = card_type
 
-    def start(self, req):
+    def start(self):
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
         }
@@ -57,11 +59,12 @@ class ThreeDPayment:
         data.update(self.auth)
         payload = urlencode(data)
         response = self.http.post(self.url.enroll, payload, headers)
+        self.start_response = response
         print(response.encode('utf8'))
         return response
 
-    def enrollment_result(self, response):
-        result = xmltodict.parse(response)
+    def enrollment_result(self):
+        result = xmltodict.parse(self.start_response)
         root = dict(result).get('IPaySecure')
         error_code = root.get('MessageErrorCode')
         message = dict(root.get("Message"))
@@ -73,11 +76,13 @@ class ThreeDPayment:
         self.md = res.get("MD")
         self.brand = res.get("ACTUALBRAND")
         status = res.get("Status")
+        self.enrollment_response = res
         if status != 'Y':
             return {'status': False, 'message': error_code}
-        return {'status': True, 'template': self.get_acs_html(res)}
+        return {'status': True}
 
-    def get_acs_html(self, res):
+    def get_acs_html(self):
+        res = self.enrollment_response
         template_path = pathlib.Path(__file__).parent.absolute()
         html_template = open(os.path.join(template_path, 'html', 'pareq_to_acs.html'), 'r', encoding="utf-8")
         t = html_template.read()

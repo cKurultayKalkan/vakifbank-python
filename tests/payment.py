@@ -8,20 +8,13 @@ import xmltodict
 
 class TestThreeD(unittest.TestCase):
     def setUp(self):
-        self.three_d = ThreeDPayment()
-
-
-class TestInit(TestThreeD):
-    def test_initial_speed(self):
-        self.assertEqual(0, 0)
-
-    def test_start(self):
         year = TEST_CARD.get('expire_year')
         month = TEST_CARD.get('expire_month')
         expirydate = year[2:] + month
         currency = CURRENCY_TYPES.get(TEST_CARD.get("currency"))
 
-        req = {
+        self.three_d = ThreeDPayment()
+        self.data = {
             "order_id": random.randrange(1000),
             "amount": "1.00",
             "pan": TEST_CARD.get("pan"),
@@ -30,7 +23,22 @@ class TestInit(TestThreeD):
             "success_url": "http://localhost:8000/success",
             "fail_url": "http://localhost:8000/success"
         }
-        data = self.three_d.prepare(**req)
+
+
+class TestInit(TestThreeD):
+    def test_initial_speed(self):
+        self.assertEqual(0, 0)
+
+    def test_start(self):
+        data = self.three_d.prepare(**self.data)
         response = self.three_d.start(data)
+        self.data = response
         result = xmltodict.parse(response)
         self.assertEqual(dict(result)['IPaySecure']['MessageErrorCode'], "200")
+
+    def test_enrollment_result(self):
+        data = self.three_d.prepare(**self.data)
+        response = self.three_d.start(data)
+        self.data = response
+        result = self.three_d.enrollment_result(self.data)
+        print(result)

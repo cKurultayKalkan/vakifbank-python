@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VposRequest>
+    <MerchantId>655500056</MerchantId>
+    <Password>123456</Password>
+    <TerminalNo>1</TerminalNo>
+    <TransactionType>Sale</TransactionType>
+    <TransactionId>b2d71cc5-d242-4b01-8479-d56eb8f74d7c</TransactionId>àopsiyonel
+    <CurrencyAmount>90.50</CurrencyAmount>
+    <CurrencyCode>949</CurrencyCode>
+    <Pan>4543600299100712</Pan>
+    <Cvv>454</Cvv>
+    <Expiry>201611</Expiry>
+    <ECI>05</ECI>
+    à opsiyonel (TransactionDeviceSource 0 ve işlem 3D ise zorunludur. TransactionDeviceSource 1 ise mesajda
+    olmamalıdır)
+    <CAVV>asfa435redf</CAVV>
+    à opsiyonel (TransactionDeviceSource 0 ve işlem 3D ise zorunludur. TransactionDeviceSource 1 ise mesajda
+    olmamalıdır)
+    <MpiTransactionId>5d6b951b06fa043379458dc835b71d0c8</MpiTransactionId>
+    à opsiyonel (TransactionDeviceSource 0 ve işlem 3D ise zorunludur. TransactionDeviceSource 1 ise mesajda
+    olmamalıdır)
+    <OrderId>z2d71cc5-d242-4b01-8479-d56eb8f74d7c</OrderId>àopsiyonel
+    <ClientIp>190.20.13.12</ClientIp>
+    <CustomItems>àopsiyonel
+        <Item name="İsim" value="A"/>
+        <Item name="Soyisim" value="B"/>
+        <Item name="Açıklama" value="Online Bilet Satışı"/>
+    </CustomItems>
+    <TransactionDeviceSource>0</TransactionDeviceSource>àECommerce
+
+</VposRequest>

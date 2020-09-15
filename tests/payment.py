@@ -48,10 +48,11 @@ class TestInit(TestThreeD):
         response = self.three_d.start()
         self.data = response
         result = self.three_d.enrollment_result()
-        html_result = result.get('template')
+        html_result = self.three_d.get_acs_html()
         with open("test.html", "w", encoding='utf-8') as file:
             file.write(str(html_result))
         print(result)
 
     def test_vpos_provision_request(self):
-        self.vpos.request_provision()
+        pass
+        # self.vpos.request_provision()

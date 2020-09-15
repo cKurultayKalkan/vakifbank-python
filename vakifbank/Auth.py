@@ -22,3 +22,4 @@ class Auth:
             "MerchantPassword": self.MerchantPassword,
             "HostTerminalId": self.HostTerminalId,
         }
+

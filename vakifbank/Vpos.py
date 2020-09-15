@@ -2,7 +2,6 @@ from vakifbank.Routes import ServiceUrl
 from vakifbank.config.consts import *
 from vakifbank.Service import HttpClient
 from vakifbank.Auth import Auth
-from xml.etree.ElementTree import Element, SubElement, tostring
 
 import xmltodict
 
@@ -13,7 +12,7 @@ class VPos:
         self.url = ServiceUrl('VPos', debug_)
         self.http = HttpClient
         if credentials is None and three_d:
-            self.auth = three_d.auth
+            self.auth = three_d.auth.getDict()
         elif credentials:
             self.auth = Auth.getInstance(credentials).getDict()
         else:
@@ -22,8 +21,8 @@ class VPos:
     def request_provision(self, req):
         card = {
             'Pan': req.get("Pan"),
-            'Cvv': req.get("Cvv"),  # CVV kodu
-            'Expiry': req.get('Expiry')  # YYYYMM
+            'Cvv': req.get("Cvv"),
+            'Expiry': req.get('Expiry')
         }
 
         confirm = {
@@ -33,23 +32,26 @@ class VPos:
         }
         data = {
             'TransactionType': 'Sale',
-            'CurrencyAmount': req.get("PurchAmount"),
+            'CurrencyAmount': req.get("CurrencyAmount"),
             'CurrencyCode': req.get("PurchCurrency"),
             'ClientIp': req.get('IP'),
-            'TransactionDeviceSource': '0'
+            'TransactionDeviceSource': '0',
+            'MerchantId': self.auth.get('MerchantId'),
+            'Password': self.auth.get('MerchantPassword'),
+            'TerminalNo': self.auth.get('HostTerminalId')
         }
 
         data.update(confirm)
         data.update(card)
-        data.update(self.auth)
         data = {
-            'VPosRequest': data
+            'VposRequest': data
         }
 
         headers = {
-            'Content-Type': 'application/xml',
+            'Content-Type': 'application/x-www-form-urlencoded',
         }
 
-        xmldata = xmltodict.unparse(data)
-        res = self.http.post(self.url.provision, xmldata, headers)
+        xmldata = xmltodict.unparse(data).replace(' ', '').replace('<?xmlversion="1.0"encoding="utf-8"?>', '')
+        send_data = 'prmstr=' + xmldata
+        res = self.http.post(self.url.provision, send_data, headers)
         return res

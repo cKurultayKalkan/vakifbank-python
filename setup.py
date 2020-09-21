@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="vakifbank",  # Replace with your own username
-    version="0.1.0",
+    version="0.1.1",
     author="Çağdaş Kurultay Kalkan",
     author_email="kurultay@codeck.com.tr",
     description="Vakıfbank Payment Gateway Python Package",

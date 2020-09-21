@@ -7,6 +7,7 @@ THREED_BASE = "https://3dsecure.vakifbank.com.tr"
 THREED_TEST = "https://3dsecuretest.vakifbank.com.tr"
 POS_ENROLL = "MPIAPI/MPI_Enrollment.aspx"
 POS_API = "VposService/TransactionServices.asmx"
+POS_PROVISION = 'VposService/v3/Vposreq.aspx'
 POS_SERVICE_SEARCH = 'UIService/TransactionSearchOperations.asmx'
 POS_SERVICE_HELPER = '/UIService/MerchantServices.asmx'
 
@@ -28,6 +29,7 @@ class ServiceUrl:
 
             self.enroll = f"{base3d}/{POS_ENROLL}"
             self.api = f"{base}/{POS_API}"
+            self.provision = f"{base}/{POS_PROVISION}"
             self.transaction = f"{base}/{POS_SERVICE_SEARCH}"
             self.helper = f"{base}/{POS_SERVICE_HELPER}"
         elif service_type == 'CP':

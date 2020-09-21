@@ -2,8 +2,9 @@ import os
 import unittest
 import random
 from vakifbank.ThreeD_Payment import ThreeDPayment
+from vakifbank.Vpos import VPos
 from tests.test_cards import TEST_CARD
-from vakifbank.consts import CARD_TYPES, CURRENCY_TYPES
+from vakifbank.config.consts import CURRENCY_TYPES
 import xmltodict
 
 
@@ -19,6 +20,7 @@ class TestThreeD(unittest.TestCase):
             'HostTerminalId': os.environ.get('HostTerminalId')
         }
         self.three_d = ThreeDPayment(credentials)
+        self.vpos = VPos(three_d=self.three_d)
         self.data = {
             "order_id": random.randrange(1000),
             "amount": "1.00",
@@ -50,3 +52,6 @@ class TestInit(TestThreeD):
         with open("test.html", "w", encoding='utf-8') as file:
             file.write(str(html_result))
         print(result)
+
+    def test_vpos_provision_request(self):
+        self.vpos.request_provision()

@@ -1,10 +1,10 @@
 import os
 import pathlib
 
-from vakifbank.routes import ServiceUrl
-from vakifbank.consts import *
-from vakifbank.service import HttpClient
-from vakifbank.auth import Auth
+from vakifbank.Routes import ServiceUrl
+from vakifbank.config.consts import *
+from vakifbank.Service import HttpClient
+from vakifbank.Auth import Auth
 from urllib.parse import urlencode
 import xmltodict
 

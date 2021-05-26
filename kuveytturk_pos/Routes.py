@@ -1,19 +1,19 @@
-BASE_URL = "https://vakifbank.com.tr/"
+BASE_URL = "https://boa.kuveytturk.com.tr/"
 
 # VIRTUAL POS
-POS_BASE = "https://onlineodeme.vakifbank.com.tr:4443"
-POS_TEST = "https://onlineodemetest.vakifbank.com.tr:4443"
-THREED_BASE = "https://3dsecure.vakifbank.com.tr"
-THREED_TEST = "https://3dsecuretest.vakifbank.com.tr"
-POS_ENROLL = "MPIAPI/MPI_Enrollment.aspx"
+POS_BASE = "https://boa.kuveytturk.com.tr/sanalposservice/Home/"
+POS_TEST = "https://boa.kuveytturk.com.tr/sanalposservice/Home/"
+THREED_BASE = "https://boa.kuveytturk.com.tr/sanalposservice/Home/"
+THREED_TEST = "https://boa.kuveytturk.com.tr/sanalposservice/Home/"
+POS_ENROLL = "ThreeDModelPayGate"
 POS_API = "VposService/TransactionServices.asmx"
-POS_PROVISION = 'VposService/v3/Vposreq.aspx'
+POS_PROVISION = 'ThreeDModelProvisionGate'
 POS_SERVICE_SEARCH = 'UIService/TransactionSearchOperations.asmx'
 POS_SERVICE_HELPER = '/UIService/MerchantServices.asmx'
 
 # COMMON PAYMENT
-CP_BASE = "https://cpweb.vakifbank.com.tr"
-CP_TEST = "https://cptest.vakifbank.com.tr"
+CP_BASE = "https://boa.kuveytturk.com.tr/"
+CP_TEST = "https://boa.kuveytturk.com.tr/"
 CP_ENROLL = "CommonPayment/api/RegisterTransaction"
 CP_API = "CommonPayment/SecurePayment"
 CP_TRANSACTION = "CommonPayment/api/VposTransaction"

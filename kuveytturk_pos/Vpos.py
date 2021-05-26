@@ -1,7 +1,7 @@
-from vakifbank.Routes import ServiceUrl
-from vakifbank.config.consts import *
-from vakifbank.Service import HttpClient
-from vakifbank.Auth import Auth
+from kuveytturk_pos.Routes import ServiceUrl
+from kuveytturk_pos.config.consts import *
+from kuveytturk_pos.Service import HttpClient
+from kuveytturk_pos.Auth import Auth
 
 import xmltodict
 
@@ -20,16 +20,20 @@ class VPos:
 
     def request_provision(self, req):
         card = {
-            'Pan': req.get("Pan"),
-            'Cvv': req.get("Cvv"),
-            'Expiry': req.get('Expiry')
+            'CardNumber': req.get("Pan"),
+            'CardExpireDateYear': req.get("Cvv"),
+            'CardExpireDateMonth': req.get('Expiry'),
+            'CardHolderName': req.get('Expiry'),
+            'cardCVV2': req.get('Expiry'),
+            'CardType': req.get('Expiry'),
         }
 
-        confirm = {
-            'ECI': req.get("ECI"),
-            'CAVV': req.get("CAVV"),
-            'MpiTransactionId': req.get("VerifyEnrollmentRequestId"),
+        redirection = {
+            'OkUrl': 'https://udef.org.tr/',
+            'FailUrl': 'https://udef.org.tr/',
+            'HashData': ""
         }
+
         data = {
             'TransactionType': 'Sale',
             'CurrencyAmount': req.get("CurrencyAmount"),
@@ -41,7 +45,7 @@ class VPos:
             'TerminalNo': self.auth.get('HostTerminalId')
         }
 
-        data.update(confirm)
+        data.update(redirection)
         data.update(card)
         data = {
             'VposRequest': data

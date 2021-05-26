@@ -1,2 +1,2 @@
 include Makefile CHANGES LICENSE AUTHORS README
-recursive-include vakifbank/html *
+recursive-include kuveytturk_pos/html *

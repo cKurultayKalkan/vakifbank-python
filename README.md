@@ -1,9 +1,9 @@
-# Vakıfbank Python Package
+# Kuveyttürk Pos Python Package
 
 
 ## Install
 
-`pip install vakifbank`
+`pip install kuveytturk`
 
 ## Usage
 

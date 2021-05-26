@@ -1,10 +1,10 @@
 import os
 import unittest
 import random
-from vakifbank.ThreeD_Payment import ThreeDPayment
-from vakifbank.Vpos import VPos
+from kuveytturk_pos.ThreeD_Payment import ThreeDPayment
+from kuveytturk_pos.Vpos import VPos
 from tests.test_cards import TEST_CARD
-from vakifbank.config.consts import CURRENCY_TYPES
+from kuveytturk_pos.config.consts import CURRENCY_TYPES
 import xmltodict
 
 
@@ -15,13 +15,22 @@ class TestThreeD(unittest.TestCase):
         expirydate = year[2:] + month
         currency = CURRENCY_TYPES.get(TEST_CARD.get("currency"))
         credentials = {
-            'HostPassword': os.environ.get('HostPassword'),
-            'HostMerchantId': os.environ.get('HostMerchantId'),
-            'HostTerminalId': os.environ.get('HostTerminalId')
+            "MerchantId": "",
+            "CustomerId": "",
+            "UserName": "",
+            "Password": "",
         }
         self.three_d = ThreeDPayment(credentials)
         self.vpos = VPos(three_d=self.three_d)
         self.data = {
+            'card_holder': card_holder,
+            'expiry_year': expiry_year,
+            'expiry_month': expiry_month,
+            'card_cvv': card_cvv,
+            'currency': currency,
+            'success_url': success_url,
+            'fail_url': fail_url,
+            'card_type': card_type,
             "order_id": random.randrange(1000),
             "amount": "1.00",
             "pan": TEST_CARD.get("pan"),
